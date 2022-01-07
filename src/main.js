@@ -2,6 +2,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import 'normalize.css'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import VueLuckyCanvas from '@lucky-canvas/vue'
+
+Vue.use(VueLuckyCanvas)
+Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
