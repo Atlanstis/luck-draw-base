@@ -55,23 +55,12 @@
 </template>
 
 <script>
+import { prizes, prizeMap } from '@/constants.js'
+
 export default {
   name: 'Setting',
 
   data() {
-    const prizes = [
-      { id: 1, name: '一等奖', num: 2 },
-      { id: 2, name: '二等奖', num: 4 },
-      { id: 3, name: '三等奖', num: 6 },
-      { id: 4, name: '安慰奖', num: 10 },
-      { id: 5, name: '再来一次' },
-      { id: 0, name: '新年快乐' },
-    ]
-    const prizeMap = {}
-    prizes.forEach((prize) => {
-      prizeMap[prize.id] = prize.name
-    })
-
     const timesValidate = (rule, value, callback) => {
       if (value < this.totalPrizeNum) {
         callback(new Error('抽奖次数不能小于奖品数'))
@@ -173,6 +162,7 @@ export default {
       this.results = arr
       if (isSave) {
         localStorage.setItem('__results__', JSON.stringify(this.results))
+        localStorage.setItem('__nowIndex__', -1)
         this.$message.success({
           message: '初始化成功',
           duration: 1000,
