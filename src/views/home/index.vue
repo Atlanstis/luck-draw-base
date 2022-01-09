@@ -218,7 +218,11 @@ export default {
         this.prizeId = this.results[this.nowIndex]
         this.$refs.myLucky.stop(this.prizeId)
         this.isTurning = false
-      }, 12 * 1000)
+        setTimeout(() => {
+          this.$turnAudio.pause()
+          this.$turnAudio.load()
+        }, 2.5 * 1000)
+      }, 4 * 1000)
     },
 
     endCallback() {
